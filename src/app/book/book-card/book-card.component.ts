@@ -15,5 +15,10 @@ export class BookCardComponent {
     click.preventDefault();
     console.log(`Clicked details for ${this.content.title}`);
     this.detailClick.emit(this.content);
-  }  
+  }
+
+  customStyle = {
+    color: 'green',
+    fontWeight: 600
+  };
 }
