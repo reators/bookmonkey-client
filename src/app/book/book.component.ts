@@ -9,12 +9,12 @@ import { BookApiService } from './book-api.service';
 })
 export class BookComponent implements OnInit {
 
-  books: Book[];
+  books: Book[] = [];
 
   constructor(
     private bookApi: BookApiService
   ) {
-    this.books = bookApi.getAll();
+    bookApi.getAll().subscribe(booksFromApi => (this.books = booksFromApi));
   }
 
   ngOnInit(): void {
