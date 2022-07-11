@@ -11,14 +11,16 @@ import { BookApiService } from './book-api.service';
 export class BookComponent implements OnInit, OnDestroy {
 
   books: Book[] = [];
-  bookApiSubscription = Subscription.EMPTY;
+  bookApiSubscription: Subscription = new Subscription();
 
   constructor(
     private bookApi: BookApiService
   ) {}
   
   ngOnInit(): void {
-    this.bookApiSubscription = this.bookApi.getBooks().subscribe(booksFromApi => (this.books = booksFromApi));
+    this.bookApiSubscription.add(
+      this.bookApi.getBooks().subscribe(booksFromApi => (this.books = booksFromApi))
+    );
   }
 
   ngOnDestroy(): void {
