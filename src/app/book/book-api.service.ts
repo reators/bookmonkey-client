@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Book } from './book';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BookApiService {
 
   private books: Book[] = [
