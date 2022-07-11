@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Book } from './book';
 import { BookApiService } from './book-api.service';
 
@@ -7,17 +8,21 @@ import { BookApiService } from './book-api.service';
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss']
 })
-export class BookComponent implements OnInit {
+export class BookComponent implements OnInit, OnDestroy {
 
   books: Book[] = [];
+  bookApiSubscription = Subscription.EMPTY;
 
   constructor(
     private bookApi: BookApiService
-  ) {
-    bookApi.getBooks().subscribe(booksFromApi => (this.books = booksFromApi));
+  ) {}
+  
+  ngOnInit(): void {
+    this.bookApiSubscription = this.bookApi.getBooks().subscribe(booksFromApi => (this.books = booksFromApi));
   }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.bookApiSubscription.unsubscribe();
   }
 
   goToBookDetails(book: Book) {
@@ -29,6 +34,4 @@ export class BookComponent implements OnInit {
   updateBookSearchTerm(input: Event) {
     this.bookSearchTerm = (input.target as HTMLInputElement).value;
   }
-
-  // TODO: add unsubscribe
 }
