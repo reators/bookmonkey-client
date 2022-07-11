@@ -14,15 +14,11 @@ export class BookComponent implements OnInit {
   constructor(
     private bookApi: BookApiService
   ) {
-    bookApi.getAll().subscribe(booksFromApi => (this.books = booksFromApi));
+    bookApi.getBooks().subscribe(booksFromApi => (this.books = booksFromApi));
   }
 
   ngOnInit(): void {
   }
-
-
-  // link:     "https://www.thalia.de/shop/home/artikeldetails/A1027079909",
-  // link:     "https://www.amazon.de/Fit-ohne-Geräte-Körpergewicht-Weltbestseller/dp/3742304119/ref=sr_1_1",
 
   goToBookDetails(book: Book) {
     console.log('Navigate to book details soon ...');
@@ -33,4 +29,6 @@ export class BookComponent implements OnInit {
   updateBookSearchTerm(input: Event) {
     this.bookSearchTerm = (input.target as HTMLInputElement).value;
   }
+
+  // TODO: add unsubscribe
 }

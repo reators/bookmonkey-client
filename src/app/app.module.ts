@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BookModule } from './book/book.module';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { BookModule } from './book/book.module';
   ],
   imports: [
     BrowserModule,
-    BookModule
+    BookModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
