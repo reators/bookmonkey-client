@@ -1,5 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Book } from './book';
 import { BookApiService } from './book-api.service';
@@ -14,6 +14,7 @@ export class BookComponent implements OnInit {
   books$!: Observable<Book[]>;
 
   constructor(
+    private router: Router,
     private bookApi: BookApiService
   ) {}
   
@@ -22,8 +23,9 @@ export class BookComponent implements OnInit {
   } 
 
   goToBookDetails(book: Book) {
-    console.log('Navigate to book details soon ...');
+    console.log('Navigate to book details');
     console.table(book);
+    this.router.navigate(['books', 'detail', book.isbn])
   }
 
   bookSearchTerm: string = '';

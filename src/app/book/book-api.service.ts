@@ -8,8 +8,14 @@ export class BookApiService {
 
   constructor(private http: HttpClient) { }
 
-  // 'bookmonkey-api' needs to be started first in order to use this:
+  backend: string = 'http://localhost:4730';
+
+  // 'bookmonkey-api' needs to be started first in order to use these:
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>('http://localhost:4730/books')
+    return this.http.get<Book[]>(`${this.backend}/books`)
+  }
+
+  getBookByIsbn(isbn: string): Observable<Book> {
+    return this.http.get<Book>(`${this.backend}/books/${isbn}`)
   }
 }

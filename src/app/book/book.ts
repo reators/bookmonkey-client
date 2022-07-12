@@ -1,5 +1,9 @@
 export interface Book {
-    title: String,
-    author: String,
-    abstract: String
+    title: string,
+    author: string,
+    abstract: string,
+    isbn: string,
+    cover: string,
+    numPages: number,
+    subtitle: string
 }
