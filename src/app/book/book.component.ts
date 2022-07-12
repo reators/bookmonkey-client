@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Book } from './book';
@@ -19,7 +20,8 @@ export class BookComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.bookApiSubscription.add(
-      this.bookApi.getBooks().subscribe(booksFromApi => (this.books = booksFromApi))
+      this.bookApi.getBooks().subscribe(booksFromApi => (this.books = booksFromApi),
+                                        (e: HttpErrorResponse) => console.log(e))
     );
   }
 
