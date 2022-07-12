@@ -7,7 +7,7 @@
 
 <app-book-card
 
-  *ngFor="let book of books | bookFilter: bookSearchTerm"
+  *ngFor="let book of books$ | async | bookFilter: bookSearchTerm"
   [content]="book"
   (detailClick)="goToBookDetails($event)">
 

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Book } from './book';
 import { BookApiService } from './book-api.service';
 
@@ -9,25 +9,17 @@ import { BookApiService } from './book-api.service';
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss']
 })
-export class BookComponent implements OnInit, OnDestroy {
+export class BookComponent implements OnInit {
 
-  books: Book[] = [];
-  bookApiSubscription: Subscription = new Subscription();
+  books$!: Observable<Book[]>;
 
   constructor(
     private bookApi: BookApiService
   ) {}
   
   ngOnInit(): void {
-    this.bookApiSubscription.add(
-      this.bookApi.getBooks().subscribe(booksFromApi => (this.books = booksFromApi),
-                                        (e: HttpErrorResponse) => console.log(e))
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.bookApiSubscription.unsubscribe();
-  }
+    this.books$ = this.bookApi.getBooks();
+  } 
 
   goToBookDetails(book: Book) {
     console.log('Navigate to book details soon ...');
