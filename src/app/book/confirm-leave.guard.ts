@@ -6,8 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ConfirmLeaveGuard implements CanDeactivate<unknown> {
+  
   canDeactivate(): boolean {
     return window.confirm("Do you really want to leave?");
   }
   
+  // Solution to confirm only once:
+  // https://github.com/workshops-de/angular-workshop/blob/solve--build-a-can-deactivate-guard/src/app/confirm-leave.guard.ts
+
 }
