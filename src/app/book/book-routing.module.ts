@@ -4,6 +4,7 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookComponent } from './book.component';
 import { ConfirmLeaveGuard } from './confirm-leave.guard'
 import { BookNewComponent } from './book-new/book-new.component';
+import { BookEditComponent } from './book-edit/book-edit.component';
 
 export const bookRoutes: Routes = [
   {
@@ -18,6 +19,10 @@ export const bookRoutes: Routes = [
   {
     path: 'new',
     component: BookNewComponent,
+  },
+  {
+    path: 'edit/:isbn',
+    component: BookEditComponent,
   }
 ];
 

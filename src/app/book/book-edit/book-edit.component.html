@@ -1,0 +1,15 @@
+<h2>Edit book</h2>
+
+<form *ngIf="book" #form="ngForm">
+
+    <label>Title:</label>
+    <input type="text" [(ngModel)]="book.title" name="title" #title="ngModel">
+    <br />
+
+    <label>Subitle:</label>
+    <input type="text" [(ngModel)]="book.subtitle" name="subtitle" #title="ngModel">
+    <br />
+
+    <button type="submit" [disabled]="form.invalid" (click)="update()">Update</button>
+
+</form>
