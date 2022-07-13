@@ -5,6 +5,7 @@ import { BookCardComponent } from './book-card/book-card.component';
 import { BookFilterPipe } from './book-filter/book-filter.pipe';
 import { BookApiService } from './book-api.service';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { BookRoutingModule } from './book-routing.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
     BookDetailComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, 
+    BookRoutingModule,
   ],
   exports: [
     BookComponent
