@@ -7,6 +7,8 @@ import { BookApiService } from './book-api.service';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookRoutingModule } from './book-routing.module';
 import { ConfirmLeaveGuard } from './confirm-leave.guard';
+import { BookNewComponent } from './book-new/book-new.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,11 +16,13 @@ import { ConfirmLeaveGuard } from './confirm-leave.guard';
     BookCardComponent,
     BookComponent,
     BookFilterPipe,
-    BookDetailComponent
+    BookDetailComponent,
+    BookNewComponent
   ],
   imports: [
     CommonModule, 
     BookRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     BookComponent

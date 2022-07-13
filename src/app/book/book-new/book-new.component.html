@@ -1,0 +1,23 @@
+<h2>New Book</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class='container'>
+
+        <label>Author:</label>
+        <input type="text" formControlName="author" placeholder="Author">
+
+        <label>Title:</label>
+        <input type="text" formControlName="title" placeholder="Title">
+
+        <label>Subtitle:</label>
+        <input type="text" formControlName="subtitle" placeholder="Subtitle">
+
+        <label>ISBN:</label>
+        <input type="text" formControlName="isbn" placeholder="ISBN">
+
+        <label>Abstract:</label>
+        <textarea type="text" cols="40" rows="5" formControlName="abstract" placeholder="Abstract"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Save</button>
+</form>
