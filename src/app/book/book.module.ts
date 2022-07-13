@@ -6,6 +6,7 @@ import { BookFilterPipe } from './book-filter/book-filter.pipe';
 import { BookApiService } from './book-api.service';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookRoutingModule } from './book-routing.module';
+import { ConfirmLeaveGuard } from './confirm-leave.guard';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { BookRoutingModule } from './book-routing.module';
     BookComponent
   ],
   providers: [
-    BookApiService
+    BookApiService,
+    ConfirmLeaveGuard
   ]
 })
 export class BookModule { }
